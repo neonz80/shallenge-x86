@@ -1,0 +1,12 @@
+TARGET = shallenge.exe
+SRC = shallenge.cpp sha256-x86.cpp
+HEADERS = print.hpp
+
+all : $(TARGET)
+
+$(TARGET): Makefile.win32-clang $(SRC) $(HEADERS)
+	clang-cl -Fe$@ -EHsc -O2 -msse4.1 -msha -std:c++20 $(SRC)
+
+clean :
+      -@del /Q $(TARGET) 2>NUL:
+
